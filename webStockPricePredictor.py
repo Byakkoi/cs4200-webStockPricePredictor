@@ -15,6 +15,7 @@ end = datetime.now()
 start = datetime(end.year-20,end.month,end.day)
 
 stock_data = yf.download(stock, start, end)
+stock_data.columns = [col[0] for col in stock_data.columns]
 
 model = load_model("Latest_stock_price_model.keras")
 st.subheader("Stock Data")
@@ -47,7 +48,8 @@ st.subheader('Original Close Price and MA for 100 days and MA for 250 days')
 st.pyplot(plot_graph((15,6), stock_data['MA_for_100_days'],stock_data,1,stock_data['MA_for_250_days']))
 
 # debugging
-st.write(stock_data.columns)
+# st.write(stock_data.columns)
+# print(stock_data.columns)
 
 scaler = MinMaxScaler(feature_range=(0,1))
 scaled_data = scaler.fit_transform(x_test[['Close']])
@@ -81,4 +83,3 @@ fig = plt.figure(figsize=(15,6))
 plt.plot(pd.concat([stock_data.Close[:splitting_len+100],plotting_data], axis=0))
 plt.legend(["Data- not used", "Original Test data", "Predicted Test data"])
 st.pyplot(fig)
-
