@@ -17,7 +17,7 @@ start = datetime(end.year-20,end.month,end.day)
 stock_data = yf.download(stock, start, end)
 stock_data.columns = [col[0] for col in stock_data.columns]
 
-model = load_model("Latest_stock_price_model.keras")
+model = load_model("C://Users//byakk//OneDrive//Documents//VSCode-CS4650//cs4200-webStockPricePredictor//Latest_stock_price_model.keras")
 st.subheader("Stock Data")
 st.write(stock_data)
 
