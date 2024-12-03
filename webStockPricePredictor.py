@@ -30,6 +30,7 @@ def plot_graph(figsize, values, full_data, extra_data = 0, extra_dataset = None)
     plt.plot(full_data.Close, 'b')
     if extra_data:
         plt.plot(extra_dataset)
+    plt.legend(loc='best')
     return fig
 
 st.subheader('Original Close Price and MA for 250 days')
