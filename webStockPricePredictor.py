@@ -9,6 +9,7 @@ from sklearn.metrics import mean_squared_error, mean_absolute_error
 from datetime import datetime
 
 st.title("Stock Price Predictor App")
+st.subheader("Byron Wong - CS 4200")
 
 stock = st.text_input("Enter the Stock ID", "AAPL")
 
@@ -185,5 +186,8 @@ accuracy_10_percent = calculate_percentage_accuracy(
 )
 
 # Display percentage accuracy
-st.write(f"**Accuracy within ±5%:** {accuracy_5_percent:.2f}%")
-st.write(f"**Accuracy within ±10%:** {accuracy_10_percent:.2f}%")
+with st.expander(f"**Accuracy within ±5%:** {accuracy_5_percent:.2f}%"):
+    st.write(f"The model's predictions are within 5% of the actual stock prices for {accuracy_5_percent:.2f}% of the test data.")
+    
+with st.expander(f"**Accuracy within ±10%:** {accuracy_10_percent:.2f}%"):
+    st.write(f"The model's predictions are within 10% of the actual stock prices for {accuracy_10_percent:.2f}% of the test data.")
